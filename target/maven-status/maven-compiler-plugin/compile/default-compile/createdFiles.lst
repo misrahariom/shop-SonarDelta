@@ -1,0 +1,15 @@
+mns\unittest\coverage\PrepareDefaulterMail.class
+mns\report\SonarDelta.class
+mns\report\GetData.class
+mns\unittest\coverage\NewCoverage.class
+mns\report\FileUtils.class
+mns\report\SendEmail.class
+mns\report\CreateHTMLReport.class
+mns\unittest\coverage\CreateDefaultersReportHtml.class
+mns\unittest\coverage\SetConvertor.class
+mns\report\User.class
+mns\report\SJsonParser.class
+mns\unittest\coverage\CheckCoverage.class
+mns\unittest\coverage\Coverage.class
+mns\report\Issue.class
+mns\report\RunSonarReport.class
