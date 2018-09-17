@@ -98,7 +98,7 @@ public class SonarDelta {
 	public static void sendEmail(String html, String emailTo){// Recipient's email ID needs to be mentioned.
 	      String to = "hmisra@sapient.com";
 	      if(!"".equalsIgnoreCase(emailTo)){
-	    	to = emailTo;
+	    	//to = emailTo;
 	      }
 	      String cc = "sgupta40@sapient.com,hmisra@sapient.com,anshul.gupta3@sapient.com,mrastogi2@sapient.com";
 	   //   String replyTo = "nverma5@sapient.com,aamol@sapient.com,csharma7@sapient.com";
