@@ -60,10 +60,8 @@ public class SonarDelta {
 		Date date = new Date();
 		date.setDate(date.getDate()-1);                                                                                      
 		System.out.println(dateFormat.format(date));
-		//String url = "http://10.207.249.136:9000/api/issues/search?componentRoots=mns:wcs-master&format=json&createdAfter="+dateFormat.format(date)+"&pageIndex=";
-		//String url = "http://10.207.249.136:9000/api/issues/search?componentRoots=mns:wcs-master&format=json&createdAfter=2015-12-24&pageIndex=";
 		String url = "http://10.151.4.37:9000/api/issues/search?componentRoots=WCS_Report&format=json&createdAfter="+dateFormat.format(date)+"&pageIndex=0";
-		//String url = "http://10.151.4.37:9000/api/issues/search?componentRoots=WCS_Report&format=json&createdAfter=2018-09-01&pageIndex=0";
+		//String url = "http://10.151.4.37:9000/api/issues/search?componentRoots=WCS_Report&format=json&createdAfter=2018-09-11&pageIndex=0";
 		getUserDetails();
 		String json = fetchReport(url,1);
 		String html = findPages(json,url);
@@ -76,8 +74,6 @@ public class SonarDelta {
 	      StringBuffer sb = new StringBuffer();
 	      while(i.hasNext()) {
 	         Map.Entry me = (Map.Entry)i.next();
-	         System.out.print("key-"+me.getKey() + ": ");
-	         System.out.println("value-"+me.getValue());
 	         sb.append((String)me.getKey());
 	         sb.append(",");	         
 	      }
@@ -98,11 +94,11 @@ public class SonarDelta {
 	public static void sendEmail(String html, String emailTo){// Recipient's email ID needs to be mentioned.
 	      String to = "hmisra@sapient.com";
 	      if(!"".equalsIgnoreCase(emailTo)){
-	    	//to = emailTo;
+	    	to = emailTo;
 	      }
 	      String cc = "sgupta40@sapient.com,hmisra@sapient.com,anshul.gupta3@sapient.com,mrastogi2@sapient.com";
-	   //   String replyTo = "nverma5@sapient.com,aamol@sapient.com,csharma7@sapient.com";
-	   //   String cc = "hmisra@sapient.com";
+	      //String replyTo = "nverma5@sapient.com,aamol@sapient.com,csharma7@sapient.com";
+	       //String cc = "hmisra@sapient.com";
 	      String replyTo = "hmisra@sapient.com";
 	      InternetAddress[] iAdressArray = null;
 	      InternetAddress[] ccArray = null;
@@ -297,7 +293,7 @@ public class SonarDelta {
             	//add sapient people to voilator's list
             	String email = jo.get("author").getAsString();
             	System.out.println(email);
-            	if (null != email && email.indexOf("sapient") > 0){
+            	if (null != email && ( email.indexOf("sapient") > 0 || email.indexOf("expicient") > 0 || email.indexOf("publicisgroupe") > 0)){
             		sapVoilators.put(jo.get("author").getAsString(), users.get(jo.get("author").getAsString()));
             	}
             }else{
@@ -330,8 +326,6 @@ public class SonarDelta {
             }
             System.out.println("response:  "+sbuff.toString());
             br.close();
-
-            //System.out.println("URL Response - "+sbuff.toString());
             return sbuff.toString();
 
         } catch (MalformedURLException e) {
